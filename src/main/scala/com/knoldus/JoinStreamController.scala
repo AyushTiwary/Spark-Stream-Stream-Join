@@ -8,6 +8,9 @@ import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.functions._
 
+/**
+  * Copyright Knoldus Software LLP. All rights reserved.
+  */
 
 object JoinStreamController extends App {
 
@@ -43,11 +46,11 @@ object JoinStreamController extends App {
     .select(col("value").cast("Integer").as("data"), col("timestamp").as("timestamp2"))
     .select("data", "timestamp2")
 
-  val streamingDFAfterJoin: DataFrame = streamingDf1.join(streamingDf2, "data")
+  val streamingDfAfterJoin: DataFrame = streamingDf1.join(streamingDf2, "data")
 
-  streamingDFAfterJoin.printSchema() //to see the schema of the dataFrame
+  streamingDfAfterJoin.printSchema() //to see the schema of the dataFrame
 
-  streamingDFAfterJoin.writeStream
+  streamingDfAfterJoin.writeStream
     .format("console")
     .option("truncate", "false")
     .start()

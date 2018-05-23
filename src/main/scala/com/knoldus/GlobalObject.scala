@@ -6,6 +6,10 @@ import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.SparkSession
 
+/**
+  * Copyright Knoldus Software LLP. All rights reserved.
+  */
+
 object GlobalObject {
 
   Logger.getLogger("org").setLevel(Level.OFF)
